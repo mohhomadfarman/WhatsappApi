@@ -25,14 +25,14 @@ const request = require("request"),
 app.listen(process.env.PORT || 1337, () => console.log(`webhook is listening ${process.env.PORT}`));
 
 // Accepts POST requests at /webhook endpoint
-// app.post("/webhook", (req, res) => {
-//   // Parse the request body from the POST
-//   let body = req.body;
+app.post("/webhook", (req, res) => {
+  // Parse the request body from the POST
+  let body = req.body;
 
-//   // Check the Incoming webhook message
-//   console.log(JSON.stringify(req.body, null, 2));
-
-//   // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
+  // Check the Incoming webhook message
+  console.log(JSON.stringify(req.body, null, 2));
+  res.sendStatus(404);
+  // info on WhatsApp text message payload: https://developers.facebook.com/docs/whatsapp/cloud-api/webhooks/payload-examples#text-messages
 //   if (req.body.object) {
 //     if (
 //       req.body.entry &&
@@ -254,7 +254,7 @@ app.listen(process.env.PORT || 1337, () => console.log(`webhook is listening ${p
 //     // Return a '404 Not Found' if event is not from a WhatsApp API
 //     res.sendStatus(404);
 //   }
-// });
+});
 
 // Accepts GET requests at the /webhook endpoint. You need this URL to setup webhook initially.
 // info on verification request payload: https://developers.facebook.com/docs/graph-api/webhooks/getting-started#verification-requests 
